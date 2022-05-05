@@ -66,17 +66,29 @@ def menu(m, res=False):
 def handle_text(message):
     if message.text.strip() == 'Герои Советского Союза':
         markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-        for i in range(0, len(list(heroes_dict)) - 2, 3):
-            markup1.add(types.KeyboardButton(list(heroes_dict)[i]), types.KeyboardButton(list(heroes_dict)[i + 1]),
-                        types.KeyboardButton(list(heroes_dict)[i + 2]))
+        i = 0
+        heroes_list = list(heroes_dict)
+        while i < len(heroes_list):
+            markup1.add(
+                types.KeyboardButton(heroes_list[i]),
+                types.KeyboardButton(heroes_list[i + 1]),
+                types.KeyboardButton(heroes_list[i + 2])
+            )
+            i += 3
         bot.send_message(message.chat.id, 'Выберите героя, о котором хотите узнать',
                          reply_markup=markup1)
         bot.register_next_step_handler(message, heroes)
     elif message.text.strip() == 'Экспонаты музея':
         markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-        for i in range(0, len(list(exhibit_dict)) - 2, 3):
-            markup1.add(types.KeyboardButton(list(exhibit_dict)[i]), types.KeyboardButton(list(exhibit_dict)[i + 1]),
-                        types.KeyboardButton(list(exhibit_dict)[i + 2]))
+        i = 0
+        exhibit_list = list(exhibit_dict)
+        while i < len(exhibit_list):
+            markup1.add(
+                types.KeyboardButton(exhibit_list[i]),
+                types.KeyboardButton(exhibit_list[i + 1]),
+                types.KeyboardButton(exhibit_list[i + 2])
+            )comm
+            i += 3
         bot.send_message(message.chat.id, 'Выберите экспонат',
                          reply_markup=markup1)
         bot.register_next_step_handler(message, exhibit)
