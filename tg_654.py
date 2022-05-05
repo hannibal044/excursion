@@ -87,7 +87,7 @@ def handle_text(message):
                 types.KeyboardButton(exhibit_list[i]),
                 types.KeyboardButton(exhibit_list[i + 1]),
                 types.KeyboardButton(exhibit_list[i + 2])
-            )comm
+            )
             i += 3
         bot.send_message(message.chat.id, 'Выберите экспонат',
                          reply_markup=markup1)
