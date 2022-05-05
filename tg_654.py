@@ -66,47 +66,17 @@ def menu(m, res=False):
 def handle_text(message):
     if message.text.strip() == 'Герои Советского Союза':
         markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-        a1 = types.KeyboardButton("Дориков Максим Григорьевич")
-        a2 = types.KeyboardButton('Кустов Федор Михайлович')
-        a3 = types.KeyboardButton('Мартынов Моисей Никитович')
-        markup1.add(a1, a2, a3)
-        a4 = types.KeyboardButton('Клочков Николай Леонтьевич')
-        a5 = types.KeyboardButton('Ермолаев Петр Алексеевич')
-        a6 = types.KeyboardButton('Кашуба Владимир Несторович')
-        markup1.add(a4, a5, a6)
-        a7 = types.KeyboardButton('Черновский Сергей Акимович')
-        a8 = types.KeyboardButton('Качалко Иван Елизарович')
-        a9 = types.KeyboardButton('Колесов Александр Андреевич')
-        markup1.add(a7, a8, a9)
-        a10 = types.KeyboardButton('Никитин Иван Никитович')
-        a11 = types.KeyboardButton('Бочаров Иван Иванович')
-        a12 = types.KeyboardButton('Романов Пётр Иванович')
-        markup1.add(a10, a11, a12)
+        for i in range(0, len(list(heroes_dict)) - 2, 3):
+            markup1.add(types.KeyboardButton(list(heroes_dict)[i]), types.KeyboardButton(list(heroes_dict)[i + 1]),
+                        types.KeyboardButton(list(heroes_dict)[i + 2]))
         bot.send_message(message.chat.id, 'Выберите героя, о котором хотите узнать',
                          reply_markup=markup1)
         bot.register_next_step_handler(message, heroes)
     elif message.text.strip() == 'Экспонаты музея':
         markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-        a1 = types.KeyboardButton("Граната РГД-13")
-        a2 = types.KeyboardButton('Часы с корабля, воевавшего на Балтийском море')
-        a3 = types.KeyboardButton('Папаха Генерала Кашубы')
-        a4 = types.KeyboardButton('Шинель офицера водителя')
-        a5 = types.KeyboardButton('Подлинный флаг корабля, который воевал на Балтийском море')
-        a6 = types.KeyboardButton('Офицерский планшет Д. С. Фридмана (Зам. Командира 980 арт-полка 17-ой дивизии)')
-        a7 = types.KeyboardButton('Автограф Константина Симонова, с его прикрепленными фотографиями')
-        a8 = types.KeyboardButton('Портрет Генерала Кашубы')
-        a9 = types.KeyboardButton('Щиток от пулемёта "Максим"')
-        a10 = types.KeyboardButton('Пистолет-пулемет Шпагина')
-        a11 = types.KeyboardButton('Чернильница фронтового писаря')
-        a12 = types.KeyboardButton('Винтовка Мосина')
-        a13 = types.KeyboardButton('Винтовка Токарева')
-        a14 = types.KeyboardButton('Компас Героя Советского Союза И. Е. Качалко')
-        a15 = types.KeyboardButton('Остов Пулемета Дегтярева')
-        markup1.add(a1, a2, a3)
-        markup1.add(a4, a5, a6)
-        markup1.add(a7, a8, a9)
-        markup1.add(a10, a11, a12)
-        markup1.add(a13, a14, a15)
+        for i in range(0, len(list(exhibit_dict)) - 2, 3):
+            markup1.add(types.KeyboardButton(list(exhibit_dict)[i]), types.KeyboardButton(list(exhibit_dict)[i + 1]),
+                        types.KeyboardButton(list(exhibit_dict)[i + 2]))
         bot.send_message(message.chat.id, 'Выберите экспонат',
                          reply_markup=markup1)
         bot.register_next_step_handler(message, exhibit)
@@ -125,7 +95,7 @@ def exhibit(message):
     else:
         bot.send_message(message.chat.id, 'У нас нет такого экспоната')
     markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    siu = types.KeyboardButton("/menu");
+    siu = types.KeyboardButton("/menu")
     markup2.add(siu)
     bot.send_message(message.chat.id, 'Нажмите "/menu", чтобы вернуться в начало.', reply_markup=markup2)
 
@@ -144,7 +114,8 @@ def heroes(message):
                                                                                                  i:i + 16] == '== Литература ==' or content[
                                                                                                                                     i:i + 13] == '== Награды ==' or content[
                                                                                                                                                                     i:i + 12] == '== Память ==' or content[
-                                                                                                                                                                                                   i:i + 16] == '== Примечания ==' or content[i:i+28] == '== Советско-финская война ==':
+                                                                                                                                                                                                   i:i + 16] == '== Примечания ==' or content[
+                                                                                                                                                                                                                                      i:i + 28] == '== Советско-финская война ==':
                 break
         z = list(content)
         del z[c - 3:]
