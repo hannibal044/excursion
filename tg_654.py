@@ -3,7 +3,7 @@ from telebot import types
 import wikipedia
 
 
-bot = telebot.TeleBot('5606959452:AAGlXbT1UvAWr8fZm7lOIt3u2DxjYrELoLU')
+bot = telebot.TeleBot('5285391763:AAHgHDTu4Ea3gRFs8kPy3_eeqlICsB-nE_M')
 language = "ru"
 wikipedia.set_lang(language)
 exhibit_dict = {'12': ['Граната РГД-13', 'https://disk.yandex.ru/d/NQjiV0B5fvGlCA', 'РГД-33 — советская ручная граната, \
