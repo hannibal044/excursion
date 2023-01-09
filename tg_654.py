@@ -78,7 +78,7 @@ def handle_text(message):
         markup1 = types.InlineKeyboardMarkup()
         for i in range(0, 6, 2):
             markup1.add(types.InlineKeyboardButton(text=heroes_dict[str(i)][0], callback_data=str(i)))
-            markup1.add(types.InlineKeyboardButton(text=heroes_dict[str(i + 1)][0], callback_data=str(i)))
+            markup1.add(types.InlineKeyboardButton(text=heroes_dict[str(i + 1)][0], callback_data=str(i+1)))
         markup1.add(types.InlineKeyboardButton(text='➡️', callback_data='+'))
         bot.edit_message_text(chat_id=message.message.chat.id, message_id=message.message.message_id,
                               text="Выберите героя, о котором хотите узнать",
@@ -87,7 +87,7 @@ def handle_text(message):
         markup1 = types.InlineKeyboardMarkup()
         for i in range(6, 12, 2):
             markup1.add(types.InlineKeyboardButton(text=heroes_dict[str(i)][0], callback_data=str(i)))
-            markup1.add(types.InlineKeyboardButton(text=heroes_dict[str(i + 1)][0], callback_data=str(i)))
+            markup1.add(types.InlineKeyboardButton(text=heroes_dict[str(i + 1)][0], callback_data=str(i+1)))
         markup1.add(types.InlineKeyboardButton(text='⬅️', callback_data='h'))
         bot.edit_message_text(chat_id=message.message.chat.id, message_id=message.message.message_id,
                               text="Выберите героя, о котором хотите узнать",
